@@ -10,7 +10,8 @@ var generator = {}
 generator.init = function(config) {
   document.body.appendChild(iframe);
 
-  iframe.src = 'http://gen.wevr.com/';
+  // iframe.src = 'http://gen.wevr.com/';
+  iframe.src = 'generator.html'
   iframe.width = '800';
   iframe.height = '800';
 
