@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Generator Lite</title>
+   
+	<style>
+		body{
+			overflow:hidden;
+			margin:0;
+			border:0;
+			padding:0;
+			background:coral;
+		}
+		iframe{
+			border:0;
+			padding:0; 
+			width:100%;
+			height:100vh;
+			overflow-x:hidden;
+			background:#fff;
+		}
+		#mypage{
+			overflow:hidden;
+			position:fixed;
+			left:50%;top:50%;
+			width:95%;
+			height:95%;
+			transform:translate(-50%, -50%);
+		}
+
+	</style>
+	<body style="border:0;margin:0;padding:0">
+	    <div id="mypage"></div>
+	    <script>
+
+		function generatorInit(config, targetEl) {
+			var iframe = document.createElement("iframe");
+		    targetEl.appendChild(iframe)
+		    iframe.addEventListener("load", function(){
+		    	iframe.contentWindow.postMessage({
+		    		call: 'configPage',
+		    		config: config
+		    	}, "*");
+		    });
+		    iframe.src = '../index.html';
+		   	window.addEventListener("message", function(e){
+		   		console.log({data:e.data, html:e.data.html});
+		   	}, false);
+		}    	
+	    var config = {
+	            components: '[{"title":"Header","data":{"text":"Page Header xxx","image":"https://www.transportvr.com/xassets/home/home-header.jpg?3","fontSize":5,"textColor":"#ffffff","letterSpacing":0.05,"fontWeight":400,"subheadText":"Subheader","buttonColor":"#DA06D3","buttonText":"Click Here!","buttonLink":"http://www.wevr.com"}},{"title":"Video","data":{"embedURL":"https://vimeo.com/195583243"}},{"title":"Headline","data":{"text":"Edit Headline","fontSize":"2","fontWeight":"400","textColor":"rgba(0,0,0,.9)","alignment":"center","letterSpacing":"0.05"}},{"title":"Paragraph","data":{"text":"<p>Lorem ipsum dolor sit amet, insolens reprimique te eum. Ut vim error adolescens disputationi, per ad malorum praesent. Veniam laboramus sed ea, eum ea zril sapientem dissentias. Te eum nibh percipit partiendo. Cu qui essent iriure. Ius ceteros suscipiantur et. Mel at option nominavi mandamus. Erant simul nihil id pro, accusamus evertitur mei te. Mea ut singulis vituperata. Vim duis theophrastus ne, eos nonumes senserit referrentur ea.</p>","alignment":"left","lineHeight":"1.5","textColor":"#666","fontSize":"1","linkColor":"#fd7c07","linkHoverColor":"#00ddff"}},{"title":"Button","data":{"buttonLink":"http://www.wevr.com","buttonText":"Click here!","buttonTextColor":"#fff","buttonColor":"#DA06D3","dataTrack":null}}]'
+	        }
+	        generatorInit(config, document.querySelector("#mypage"))
+	    </script>
+	</body>
+
+</html>
