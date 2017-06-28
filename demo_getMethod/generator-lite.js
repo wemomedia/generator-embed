@@ -18,16 +18,31 @@ generator.init = function(config) {
     // send config to generator
     return setTimeout(() => {iframe.contentWindow.postMessage({ call: 'configPage', config: config }, '*')}, 1000);
   }
+
+  // Listen to messages from child window
+  eventer(messageEvent,function(e) {
+    if (e.data.html) {
+      // here is our html and data
+      return e.data;
+    }
+  },false);
 }
 
 generator.getData = function() {
-  return iframe.contentWindow.postMessage({ call: 'getData' }, '*')
-}
+  var instId = "gen-get-data" + Math.random();
 
-// Listen to messages from child window
-eventer(messageEvent,function(e) {
-  if (e.data.html) {
-    // here is our html and data
-    console.log(e.data)
-  }
-},false);
+  return new Promise(function(resolve, reject) {
+
+    var timer = setTimeout(function() {
+        return reject(new Error("Post message timed out"));
+    }, 2000);
+
+    eventer(messageEvent,function(e) {
+      if (e.data.id && e.data.id == instId) {
+        return resolve({ html: e.data.html, data: e.data.data });
+      }
+    },false);
+
+    iframe.contentWindow.postMessage({ call: 'getData', id: instId }, '*')
+  });
+}
