@@ -26,10 +26,15 @@ generator.init = function(config) {
       return e.data;
     }
   },false);
+
+  getDataBtn.addEventListener('click', function() {
+    return generator.getData()
+  })
 }
 
 generator.getData = function() {
   var instId = "gen-get-data" + Math.random();
+  iframe.contentWindow.postMessage({ call: 'getData', id: instId }, '*')
 
   return new Promise(function(resolve, reject) {
 
@@ -39,10 +44,9 @@ generator.getData = function() {
 
     eventer(messageEvent,function(e) {
       if (e.data.id && e.data.id == instId) {
+        console.log('resolving', e.data.id, instId)
         return resolve({ html: e.data.html, data: e.data.data });
       }
     },false);
-
-    iframe.contentWindow.postMessage({ call: 'getData', id: instId }, '*')
   });
 }
