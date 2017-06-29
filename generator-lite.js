@@ -31,7 +31,7 @@ generator.init = function(config) {
 
 generator.getData = function(config) {
   var instId = "gen-get-data" + Math.random();
-  var messageConfig = config;
+  var messageConfig = config ? config : {};
   messageConfig.id = instId;
   messageConfig.call = 'getData';
 
