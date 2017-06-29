@@ -27,15 +27,15 @@ generator.init = function(config) {
       return e.data;
     }
   },false);
-
-  getDataBtn.addEventListener('click', function() {
-    return generator.getData()
-  })
 }
 
-generator.getData = function() {
+generator.getData = function(config) {
   var instId = "gen-get-data" + Math.random();
-  iframe.contentWindow.postMessage({ call: 'getData', id: instId }, '*')
+  var messageConfig = config;
+  messageConfig.id = instId;
+  messageConfig.call = 'getData';
+
+  iframe.contentWindow.postMessage(messageConfig, '*')
 
   return new Promise(function(resolve, reject) {
 
