@@ -1,4 +1,14 @@
-var GENERATOR_BASE_PATH = document.currentScript.baseURI;
+var GENERATOR_BASE_PATH;
+
+(function(){//get relative path of this script
+  var a=document.createElement("a");
+  a.href=document.currentScript.src;
+  var path = a.pathname.split("/");
+  path.pop(); path=path.join("/")+"/";
+  GENERATOR_BASE_PATH=a.origin+path;
+  console.log({GENERATOR_BASE_PATH})
+})();
+
 
 /**
  * instance of generator in iframe 
@@ -35,7 +45,7 @@ function generator(config, targetDiv){
       } else {
         iframe.contentWindow.addEventListener("load", load, {once: true});
       }
-      iframe.src=GENERATOR_BASE_PATH+"generator.html";
+      iframe.src=GENERATOR_BASE_PATH+"generator.html?v"+Math.random();
     },
 
     getData: function(){
