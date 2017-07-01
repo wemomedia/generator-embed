@@ -47,7 +47,9 @@ function generator(config, targetDiv){
       }
       iframe.src=GENERATOR_BASE_PATH+"generator.html?v"+Math.random();
     },
-
+    setData:function(config){
+      iframe.contentWindow.postMessage({call:'configPage', config: config}, "*");
+    },
     getData: function(){
       if(!inited){
         return Promise.reject(new Error("not inited yet"));
