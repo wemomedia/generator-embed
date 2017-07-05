@@ -11,34 +11,44 @@ var GENERATOR_BASE_PATH;
 
 
 /**
- * instance of generator in iframe 
- * config - 
- * config.components: STRING containing json to be passed to generator 
+ * instance of generator in iframe
+ * config -
+ * config.components: STRING containing json to be passed to generator
  * targetDiv - inject iframe into this element
- * @returns 
- *          .basePath - baseURI being used 
- *          .iframe - iframe element 
+ * @returns
+ *          .basePath - baseURI being used
+ *          .iframe - iframe element
  *          .init(config, targetDiv) -- this is run by default. don't call unless you want to re-init with new data
  *          .getData() - promise returning {html, data}
- * 
+ *
 */
 function generator(config, targetDiv){
   var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
   var eventer = window[eventMethod];
   var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
   var iframe = document.createElement("iframe");
-  iframe.width=500; 
+  iframe.width=500;
   iframe.height=500;
   var inited = false;
   var ret = {
     basePath: GENERATOR_BASE_PATH,
-    iframe: iframe, 
+    iframe: iframe,
 
     init: function(config, targetDiv){
+      // new config //
+      // generate parent id
+      var parentId = "gen-init" + Math.random();
+      // extend config with auto generated params
+      const extendedConfig = Object.assign({}, config, { parentId: parentId, basePath: GENERATOR_BASE_PATH })
+      // end new config
+
       targetDiv.appendChild(iframe);
-      var load = function(){ 
+      var load = function(){
         inited=true;
-        iframe.contentWindow.postMessage({call: 'configPage', config: config}, "*");  
+        iframe.contentWindow.postMessage({
+          call: 'configPage',
+          config: extendedConfig,
+        }, "*");
       }
       if(inited){
         load();
@@ -46,9 +56,17 @@ function generator(config, targetDiv){
         iframe.contentWindow.addEventListener("load", load, {once: true});
       }
       iframe.src=GENERATOR_BASE_PATH+"generator.html?v"+Math.random();
+
+      // set listener for updates
+      eventer(messageEvent,function(e) {
+        if (e.data.parentId && e.data.parentId == parentId) {
+          return console.log('update from embed', { html: e.data.html, data: e.data.data });
+        }
+      },{once: false});
+      // end listener
     },
     setData:function(config){
-      iframe.contentWindow.postMessage({call:'configPage', config: config}, "*");
+      iframe.contentWindow.postMessage({call:'configPage', config: config, id: 'test'}, "*");
     },
     getData: function(){
       if(!inited){
@@ -57,7 +75,7 @@ function generator(config, targetDiv){
       var instId = "gen-get-data" + Math.random();
       var config={
         call: "getData",
-        id: instId, 
+        id: instId,
         basePath: GENERATOR_BASE_PATH
       }
       console.log("getDataConfig", config);
@@ -75,8 +93,7 @@ function generator(config, targetDiv){
       });
     }//getData
 
-  }//init  
+  }//init
   ret.init(config, targetDiv);
   return ret;
 }//generator
-
