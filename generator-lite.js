@@ -6,7 +6,6 @@ var GENERATOR_BASE_PATH;
   var path = a.pathname.split("/");
   path.pop(); path=path.join("/")+"/";
   GENERATOR_BASE_PATH=a.origin+path;
-  console.log({GENERATOR_BASE_PATH})
 })();
 
 
@@ -35,12 +34,11 @@ function generator(config, targetDiv){
     iframe: iframe,
 
     init: function(config, targetDiv){
-      // new config //
+
       // generate parent id
       var parentId = "gen-init" + Math.random();
       // extend config with auto generated params
-      const extendedConfig = Object.assign({}, config, { parentId: parentId, basePath: GENERATOR_BASE_PATH })
-      // end new config
+      var extendedConfig = Object.assign({}, config, { parentId: parentId, basePath: GENERATOR_BASE_PATH })
 
       targetDiv.appendChild(iframe);
       var load = function(){
@@ -66,7 +64,12 @@ function generator(config, targetDiv){
       // end listener
     },
     setData:function(config){
-      iframe.contentWindow.postMessage({call:'configPage', config: config, id: 'test'}, "*");
+      // generate parent id
+      var parentId = "gen-init" + Math.random();
+      // extend config with auto generated params
+      var extendedConfig = Object.assign({}, config, { parentId: parentId, basePath: GENERATOR_BASE_PATH })
+      inited=true;
+      iframe.contentWindow.postMessage({call:'configPage', config: extendedConfig, id: 'test'}, "*");
     },
     getData: function(){
       if(!inited){
@@ -78,8 +81,9 @@ function generator(config, targetDiv){
         id: instId,
         basePath: GENERATOR_BASE_PATH
       }
-      console.log("getDataConfig", config);
+
       iframe.contentWindow.postMessage(config, '*')
+
       return new Promise(function(resolve, reject) {
         var timer = setTimeout(function() {
             return reject(new Error("Post message timed out"));
