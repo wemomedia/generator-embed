@@ -1,0 +1,33 @@
+@import "../../../containers/PageBuilder/page-builder.scss";
+
+.header {
+  position: relative;
+  margin-bottom: 0.5em;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  height: 37.5rem;
+
+  .header-content {
+    left: 0;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 18.5rem;
+  }
+
+  h1 {
+    margin-top: -1em;
+    margin-bottom: 0em;
+    font-weight: 400;
+    word-wrap: break-word;
+  }
+
+  h5 {
+    margin:  1rem 0;
+    opacity: .9;
+    font-size: 1.25rem;
+  }
+}

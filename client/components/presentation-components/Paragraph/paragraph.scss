@@ -1,0 +1,24 @@
+@import "../../../containers/PageBuilder/page-builder.scss";
+
+.paragraph {
+  line-height: 1.555em;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  padding: 0;
+  display: inline-flex;
+  width: 100%;
+
+  p { margin: 0; }
+
+  div:focus { outline: none; }
+
+  a { transition: .33s }
+
+}
+
+@media only screen and (max-width: 50rem) {
+  .paragraph {
+    margin: .75rem 0 !important;
+    width: 100% !important;
+  }
+}

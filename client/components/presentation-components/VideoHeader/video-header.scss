@@ -1,0 +1,50 @@
+.video-header {
+  // height: 75vh;
+  color: transparent;
+  position: relative;
+
+  iframe {
+    position: fixed;
+    top: 50%;
+    min-width: 180vh;
+    min-height: 100vh;
+    width: 100vw;
+    height: 100vw;
+    z-index: -10;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.75);
+  }
+
+  .vid-header-overlay {
+    position: fixed;
+     top: 0;
+     height: 100vh;
+     width: 100vw;
+     z-index: -2;
+  }
+
+  .vid-header-headline {
+    position: fixed;
+    top: 47.5%;
+    left: 50%;
+    line-height: 1.25em;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+  }
+
+  .scroll-btn {
+    position: fixed;
+    top: 85vh;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .fullscreen-video-edit-button {
+    position: absolute;
+    bottom: 4.75em;
+    right: 1.5em;
+    cursor: pointer;
+  }
+
+}

@@ -1,0 +1,25 @@
+.imageContainer {
+  position: relative;
+  height: auto;
+  text-align: center;
+  margin: 0.75rem auto;
+  flex: 1 100%;
+
+  .image {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    box-sizing: border-box;
+
+    h3 {
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      width: 80%;
+      margin: 0;
+      transform: translateY(-50%);
+      text-align: center;
+      line-height: 1.5em;
+    }
+  }
+}

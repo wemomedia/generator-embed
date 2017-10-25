@@ -1,0 +1,11 @@
+.social-share {
+  text-align: left;
+  position: relative;
+  flex: 1 100%;
+
+  .social-share-btn {
+    display: inline-block;
+    margin-right: .5rem;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,43 @@
+.inline-quote {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+  padding: 0;
+  margin: 0.75rem auto;
+
+  .quote {
+    align-self: stretch;
+    margin: 0;
+
+    &:focus { outline: none; }
+  }
+
+  .inline-quote-text {
+    font-size: 17px;
+    line-height: 1.618em;
+    text-align: left;
+    margin: 0;
+    overflow: hidden;
+
+    &:focus { outline: none; }
+  }
+}
+
+@media only screen and (max-width: 66em) {
+  .inline-quote {
+    flex-direction: column;
+    .quote {
+      max-width: 100%;
+      width: 100% !important;
+      margin: 1.25rem 0 !important;
+    }
+
+    .inline-quote-text {
+      width: 100% !important;
+      margin: auto 0 !important;
+    }
+  }
+}

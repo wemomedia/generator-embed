@@ -1,0 +1,36 @@
+.sectionContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+  .section {
+    width: 100vw;
+    flex-shrink: 0;
+    margin: 0px auto;
+    position: relative;
+    padding: 3rem 0 4rem;
+
+    h2 {
+      font-size: 2.2rem;
+      color: black;
+      width: 85%;
+      margin: 0 auto 1.5em;
+      font-weight: 500;
+      letter-spacing: 0;
+      line-height: 1.25em;
+      text-transform: uppercase;
+    }
+
+    .image {
+      background-size: 100% auto;
+      background-position: center;
+      background-repeat: no-repeat;
+      box-sizing: border-box;
+      width: 85%;
+      max-width: 70rem;
+      margin: 0 auto;
+      height: 19vw;
+      max-height: 20rem;
+    }
+  }
+}

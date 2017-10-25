@@ -1,0 +1,75 @@
+.press {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 105%;
+  margin-left: -2.5%;
+
+  h2 {
+    flex: 1 100%;
+    line-height: 1em;
+  }
+
+  .press-item {
+    display: inline-block;
+    text-align: left;
+    width: 100%;
+    max-width: 17.5rem;
+    padding: 4rem 2.25rem 1.5rem;
+    vertical-align: top;
+
+    h2 {
+      font-weight: 300;
+      letter-spacing: normal;
+      font-size: 1.75rem;
+      margin: 0;
+      line-height: 2.25rem;
+    }
+
+    span {
+      // font-size: 0.9rem;
+    }
+
+    .publication {
+      // font-size: 0.9rem;
+      font-weight: 500;
+      margin: .5rem 0;
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    width: 100%;
+    margin-left: 0%;
+
+    h2 {
+      flex: 1 100%;
+    }
+
+    .press-item {
+      display: inline-block;
+      text-align: left;
+
+      h2 {
+        font-weight: 300;
+        letter-spacing: normal;
+        font-size: 1.25rem;
+        margin: 0;
+        line-height: 1.5rem;
+      }
+
+      span {
+        font-size: 0.75rem;
+      }
+    }
+
+    .publication {
+      font-size: 1rem !important;
+      font-weight: 500;
+      margin: .5rem 0;
+    }
+
+  }
+}

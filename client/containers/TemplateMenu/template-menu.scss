@@ -1,0 +1,71 @@
+@import "client/styles/_variables.scss";
+
+.template-menu {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  overflow: scroll;
+
+  h2 {
+    color: $highlight-color;
+    font-weight: 300;
+    margin-bottom: 0.5em;
+  }
+
+  button {
+    width: 15em;
+    margin: 0 auto;
+  }
+
+  p {
+    color: $label-color;
+    letter-spacing: 0.05em;
+    font-weight: 300;
+    font-size: .9em;
+    margin: 0em 0 0.5em;
+  }
+
+  .savedPageSection {
+    margin-top: 5em;
+  }
+
+  .template-menu-container {
+    width: 90%;
+    max-width: 85rem;
+    margin: 2vh auto;
+    padding: 0rem 5vw 10rem;
+    min-width: 835px;
+
+    .template-menu-item {
+      margin: 0 2.5em 0 0;
+      display: inline-block;
+      vertical-align: bottom;
+
+      h3 {
+        cursor: pointer;
+        font-weight: 300;
+        color: rgba(255,255,255,.5);
+        font-size: 1.05em;
+        margin: 1.5rem 0 1rem;
+      }
+
+      .template-menu-item-thumb {
+        background-size: cover;
+        background-position: top center;
+        box-shadow: 0 8px 10px rgba(0,0,0,0.1), 0 5px 5px rgba(0,0,0,0.1);
+        width: 21rem;
+        height: 12rem;
+        cursor: pointer;
+        transition: .5s ease-out;
+
+        &:hover {
+          transform: scale(1.025);
+        }
+
+        svg {
+          font-size: 12rem;
+        }
+      }
+    }
+  }
+}

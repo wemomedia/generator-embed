@@ -1,0 +1,16 @@
+.credits-editor {
+
+  p {
+    cursor: pointer;
+    transition: .5s;
+
+    &:hover {
+      color: #00e5ff;
+    }
+  }
+
+  button {
+    min-width: 10em;
+    margin: .15em 0;
+  }
+}

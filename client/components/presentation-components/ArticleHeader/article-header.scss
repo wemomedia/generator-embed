@@ -1,0 +1,37 @@
+@import "../../../containers/PageBuilder/page-builder.scss";
+
+.header {
+  position: relative;
+  top: 2rem;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  margin: 0 auto 2.5rem;
+  width: 92.5%;
+  max-width: 80rem;
+  color: white;
+
+  .header-content {
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 15% 0;
+    text-align: center;
+  }
+
+  h1 {
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    line-height: 1.25em;
+    padding: 0 12.5%;
+    text-indent: 0.05em;
+  }
+
+  h5 {
+    margin:  1rem 0;
+    opacity: .8;
+    padding: 0 25%;
+    line-height: 1.5em;
+    font-size: 1.25rem;
+  }
+}

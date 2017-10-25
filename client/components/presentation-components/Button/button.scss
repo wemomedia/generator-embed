@@ -1,0 +1,24 @@
+@import "../../../containers/PageBuilder/page-builder.scss";
+
+.button {
+    font-family: 'Rubik' !important;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    padding: 0px 40px;
+    font-size: 16px;
+    line-height: 60px;
+    height: 60px;
+    border-radius: 30px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: .5s;
+    color: white;
+    margin: 0.75em auto;
+
+    &:hover {
+      background-color: rgba(0,0,0,.5) !important;
+      border-color: transparent !important;
+    }
+}

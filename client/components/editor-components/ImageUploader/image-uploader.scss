@@ -1,0 +1,21 @@
+@import "client/styles/_variables.scss";
+
+.image-uploader {
+  height: auto !important;
+  width: 85% !important;
+  background-color: #3c3c3c;
+  border: 1px solid #505050 !important;
+  border-radius: none !important;
+  padding: 1.5em 0em 1em;
+  text-align: center;
+
+  button {
+    border: 2px solid rgba(255,255,255,.05);
+  }
+
+  svg {
+    font-size: 4em;
+    display: block;
+    margin: 0.25rem auto;
+  }
+}

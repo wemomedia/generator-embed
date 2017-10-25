@@ -1,0 +1,64 @@
+@import "client/styles/_variables.scss";
+
+.page-controller {
+  position: fixed;
+  margin: 1.5em;
+  background-color: $background;
+  padding: 0 1em;
+  box-shadow: 0 10px 12px rgba(0,0,0,0.15), 0 6px 6px rgba(0,0,0,0.20);
+  border: 1px solid $secondary-background;
+  box-sizing: border-box;
+  z-index: 10;
+  display: inline-block;
+
+  button {
+    position: relative;
+    padding: 1em;
+    border: none;
+    border-radius: none;
+    background-color: transparent;
+    color: $text-color;
+    transition: .25s;
+    border: none;
+    box-shadow: none;
+    font-size: .9rem;
+    font-weight: 400;
+    letter-spacing: .075em;
+    text-align: right;
+    vertical-align: top;
+
+    svg {
+      position: absolute;
+      font-size: 2.25em;
+      left: -0.25rem;
+      top: .325rem;
+    }
+
+    span {
+      margin-left: 1rem;
+    }
+
+    &:hover {
+      color: $highlight-color;
+      cursor: pointer;
+      border: none;
+      background-color: transparent;
+    }
+
+    &:focus {
+      outline-style: none !important;
+      box-shadow: none !important;
+    }
+  }
+
+  .app-menu-button {
+    padding-left: 2.5em;
+    border-left: rgba(255,255,255, .15);
+    border-radius: 0;
+    height: 2.5em;
+    svg {
+      left: auto;
+      right: 0.25rem;
+    }
+  }
+}

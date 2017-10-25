@@ -1,0 +1,34 @@
+@import "client/styles/_variables.scss";
+
+.component-menu {
+  position: fixed;
+  width: 18.45em;
+  max-height: 66vh;
+  left: 1.5em;
+  background-color: rgba(0,0,0,.9);
+  padding: 1em 1em .5em;
+  border-bottom: 2px solid $background;
+  overflow-y: scroll;
+
+  button {
+    display: block;
+    color: $text-color;
+    transition: .5s;
+
+    svg {
+      vertical-align: middle !important;
+      font-size: 1.5em !important;
+      position: relative !important;
+      left: 0rem !important;
+      top: 0rem !important;
+    }
+
+    span {
+      margin-left: 1em;
+    }
+
+    &:hover {
+      color: $highlight-color;
+    }
+  }
+}

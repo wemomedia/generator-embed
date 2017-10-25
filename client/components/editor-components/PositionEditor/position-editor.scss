@@ -1,0 +1,32 @@
+.position-editor {
+  position: absolute;
+  right: -0.125rem;
+  top: -1.75rem;
+  z-index: 5;
+  background-color: rgba(0,229,255,.66);
+  border-top-left-radius: .75rem;
+  border-top-right-radius: .75rem;
+  overflow: hidden;
+  line-height: 1.75rem;
+
+  button {
+    padding: 0 .5rem;
+    vertical-align: top;
+    background-color: transparent;
+    border-radius: 0 !important;
+    height: 1.75rem;
+    line-height: 1.75rem;
+
+    svg {
+      font-size: 3.5rem;
+      line-height: 1.75rem;
+      height: 1.75rem;
+    }
+
+    &:hover {
+      background-color: rgba(0,0,0, .6);
+      border-color: rgba(0,0,0, 0);
+      color: white;
+    }
+  }
+}

@@ -1,0 +1,147 @@
+.feedContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+  .image {
+    position: relative;
+    flex-shrink: 0;
+    background-size: cover;
+    background-position: left top;
+    box-sizing: border-box;
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    color: white;
+    text-align: center;
+    padding: 1.5rem 5% 2.5%;
+    width: 100vw;
+    margin: 0px auto;
+
+    .article-main {
+      width: 90%;
+      max-width: 65rem;
+      margin: 0 auto;
+
+      .article-feature {
+        text-align: left;
+        padding: 0px 0 0 38.75%;
+        margin: 0.5rem 0 3.5rem;
+
+        .article-label {
+          color: #01fadb;
+          line-height: 1.5em;
+          margin: 0 0 3.5rem;
+          font-weight: 500;
+          font-size: 1.25rem;
+          text-align: left;
+        }
+
+        h3 {
+          max-width: 36rem;
+          line-height: 1.2em;
+          letter-spacing: .005em;
+          font-weight: 500;
+          font-size: 2.5em;
+          text-align: left;
+          text-transform: uppercase;
+          margin: .5rem 0 .5rem;
+          cursor: pointer;
+          transition: .5s;
+
+          &:hover {
+            color: rgb(0, 230, 113);
+            text-decoration: underline;
+          }
+        }
+
+        h4 {
+          text-align: left;
+          line-height: 1.2em;
+          font-size: 1.25em;
+          margin: 0;
+          width: 60%;
+        }
+
+        .article-date {
+          display: block;
+          text-align: left;
+          font-size: 1.1rem;
+          color: #01fadb;
+        }
+      }
+
+      .previous-articles-section {
+        padding: 1.75rem 0;
+        margin: 0 auto;
+
+        span {
+          color: #01fadb;
+          margin-bottom: .75rem;
+        }
+
+        h4 {
+          text-align: left;
+          line-height: 1.2em;
+          font-size: 1.25em;
+          margin: .5em 0 1em;
+          cursor: pointer;
+          transition: .5s;
+          &:hover {
+            color: rgb(0, 230, 113);
+            text-decoration: underline;
+          }
+        }
+
+        .previous-article {
+          display: inline-block;
+          width: 28%;
+          padding: 0 2.5%;
+          vertical-align: top;
+          text-align: left;
+        }
+
+      }
+
+      .article-see-more {
+        color: #01fadb;
+        font-weight: 400;
+        font-size: 1.1rem;
+        margin: 2rem auto 1rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+
+  .article-label { font-size: 1.15rem !important; }
+  .article-see-more {
+    text-align: left !important;
+    margin: 0 auto 3rem !important;
+  }
+
+  .article-main {
+    margin: 1.5rem 0 1rem !important;
+    padding: 0 5% !important;
+
+    .article-feature {
+      padding: 0 !important;
+      width: 100% !important;
+      margin: 0 auto !important;
+    }
+
+    .previous-articles-section {
+      padding: 0;
+      width: 100% !important;
+      margin-top: 1.5rem !important;
+    }
+
+    .previous-article {
+      display: block !important;
+      width: 100% !important;
+      padding: 0 !important;
+      margin: 0 auto !important;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+.credits {
+  margin: 0.75rem auto;
+  flex: 1 100%;
+
+
+  ul {
+    list-style: none;
+    padding: 0;
+    color: black;
+
+    li {
+      margin: 1em 0;
+      display: flex;
+      flex-flow: row;
+      justify-content: center;
+
+      span {
+        width: calc(50% - 2em);
+        padding: 0 1em;
+        text-align: left;
+        font-weight: 300;
+        line-height: 1.5em;
+      }
+      span:first-of-type {
+        text-align: right;
+        font-weight: 400;
+      }
+    }
+
+  }
+}

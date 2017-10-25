@@ -1,0 +1,39 @@
+@import "../../../containers/PageBuilder/page-builder.scss";
+
+.page {
+  background-color: rgba(0,0,0,.025);
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  min-height: calc(100vh - 5em);
+  text-align: center;
+  padding-bottom: 5em;
+  font-size: 1.075em;
+
+  h2 {
+    font-size: 2em;
+  }
+
+  .main-container {
+    width: calc(92.5% - 20px);
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 0.25em calc(10px + 3.5%) 2.5em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    p {
+      font-weight: 300;
+      font-size: 17px;
+      line-height: 1.618em;
+    }
+  }
+
+  .background-edit-button {
+    left: 1.5em;
+    bottom: 1.5em;
+    position: fixed;
+  }
+}

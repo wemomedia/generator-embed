@@ -1,0 +1,78 @@
+@import "client/styles/_variables.scss";
+
+.page-editor {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  width: calc(17em - 2px);
+  padding: .5em 1.5em;
+  background-color: $background;
+  border: 1px solid $secondary-background;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  overflow: scroll;
+  color: $text-color !important;
+  font-weight: 300;
+  letter-spacing: .075rem;
+
+  img {
+    // border-style: none;
+    width: 10em;
+    margin-top: 1.5em;
+  }
+
+  h3 {
+    font-weight: 300;
+    color: rgba(255,255,255,.75) !important;
+  }
+
+  form  {
+    padding-bottom: 5em;
+  }
+
+  fieldset {
+    border: none;
+    padding: 0;
+
+    label {
+      display: block;
+      margin: .5em auto 1.5em;
+      color: $label-color;
+      font-size: .9em;
+
+      input, textarea, select {
+        display: block;
+        margin-top: .75em;
+        width: 90%;
+        height: 2em;
+        padding: 0.25em 0.5em;
+        background-color: $input-background;
+        border: 1px solid $secondary-background;
+        color: $text-color;
+        font-weight: 300;
+        letter-spacing: .075rem;
+
+        &:focus {
+          outline: 2px solid rgba(0, 229, 255, 0.45);
+        }
+      }
+
+      textarea {
+        min-height: 15em;
+        padding: 0.5em;
+      }
+    }
+  }
+
+  input[type="file"] {
+      display: none;
+  }
+
+  button {
+    color: $text-color;
+    background: transparent;
+    font-size: .9rem;
+    border: 2px solid rgba(0,0,0,.075);
+    box-shadow: none;
+  }
+}

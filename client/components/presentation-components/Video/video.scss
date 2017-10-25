@@ -1,0 +1,33 @@
+.video-container {
+  width: 100%;
+  position: relative;
+
+  .video {
+    position: relative;
+    width: 100%;
+    padding-bottom: 57.403%;
+    height: 0;
+    overflow: hidden;
+    -webkit-overflow-scrolling:touch;
+    margin: 0.75rem auto;
+    background-color: rgba(0,0,0,.6);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+    iframe {
+      position: absolute;
+      top:0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  }
+
+}
+
+
+@media only screen and (max-width: 50rem) {
+  .video-container {
+    width: 100% !important;
+  }
+}
