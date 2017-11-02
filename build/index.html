@@ -21,23 +21,17 @@
 </head>
 <body>
   <div id="mypage" style="width:90vw;height:90vh"></div>
-  <button id="init-btn">open builder</button>
   <button id="get-data-btn">get data</button>
 <script src="generator-lite.js"></script>
 <script>
 
 var getDataBtn = document.getElementById('get-data-btn');
-var initBtn = document.getElementById('init-btn');
 
 var initConfig = {
   components: '[{"title":"Header","data":{"text":"Page Header","image":"https://www.transportvr.com/xassets/home/home-header.jpg?3","fontSize":5,"textColor":"#ffffff","letterSpacing":0.05,"fontWeight":400,"subheadText":"Subheader","buttonColor":"#DA06D3","buttonText":"Click Here!","buttonLink":"http://www.wevr.com"}},{"title":"Video","data":{"embedURL":"https://vimeo.com/195583243","column": "100%"}},{"title":"Headline","data":{"text":"Edit Headline","fontSize":"2","fontWeight":"400","textColor":"rgba(0,0,0,.9)","alignment":"center","letterSpacing":"0.05","column": "100%"}},{"title":"Paragraph","data":{"text":"<p>Lorem ipsum dolor sit amet, insolens reprimique te eum. Ut vim error adolescens disputationi, per ad malorum praesent. Veniam laboramus sed ea, eum ea zril sapientem dissentias. Te eum nibh percipit partiendo. Cu qui essent iriure. Ius ceteros suscipiantur et. Mel at option nominavi mandamus. Erant simul nihil id pro, accusamus evertitur mei te. Mea ut singulis vituperata. Vim duis theophrastus ne, eos nonumes senserit referrentur ea.</p>","alignment":"left","lineHeight":"1.5","textColor":"#666","fontSize":"1","linkColor":"#fd7c07","linkHoverColor":"#00ddff"}},{"title":"Button","data":{"buttonLink":"http://www.wevr.com","buttonText":"Click here!","buttonTextColor":"#fff","buttonColor":"#DA06D3","dataTrack":null}}]'
 }
 
 var gen = generator(initConfig, document.getElementById("mypage"));
-
-initBtn.addEventListener('click', function() {
-  return gen.init(initConfig, document.getElementById("mypage"));
-})
 
 getDataBtn.addEventListener('click', function() {
   gen.getData().then(data=>{
