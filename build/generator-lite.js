@@ -26,6 +26,7 @@ function generator(config, targetDiv){
   var eventer = window[eventMethod];
   var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
   var iframe = document.createElement("iframe");
+  iframe.id = 'generator-iframe'
   iframe.width=500;
   iframe.height=500;
   var inited = false;
@@ -58,6 +59,7 @@ function generator(config, targetDiv){
       // set listener for updates
       eventer(messageEvent,function(e) {
         if (e.data.parentId && e.data.parentId == parentId) {
+          if (e.data.type === 'editor') return console.log(e)
           return console.log('update from embed', { html: e.data.html, data: e.data.data });
         }
       },{once: false});
@@ -101,3 +103,28 @@ function generator(config, targetDiv){
   ret.init(config, targetDiv);
   return ret;
 }//generator
+
+
+// register new plugins
+(function initPluginRegister() {
+  var fileLoader = document.getElementById('file-loader')
+  fileLoader.addEventListener('change', e => { readURL(fileLoader); })
+
+  // get file url
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        submitPlugin(e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  // send data and component url to generator app
+  function submitPlugin(url) {
+    var setUp = new CustomEvent("generator-register-plugin", { detail: { url: url, title: 'HelloWorld', data: {} }});
+    var iframe = document.getElementById("generator-iframe");
+    iframe.contentWindow.dispatchEvent(setUp)
+  }
+})()
