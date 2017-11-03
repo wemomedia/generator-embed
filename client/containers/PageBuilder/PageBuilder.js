@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 //import styles module
 import styles from './page-builder.scss';
 //import components
-import Page from '../../components/presentation-components/Page/Page'
+import Page from './Page/Page'
 import PageEditor from '../../components/editor-components/PageEditor/PageEditor';
 import PageController from '../../components/controller-components/PageController/PageController';
 // import action creators
