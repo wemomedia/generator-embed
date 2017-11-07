@@ -1,4 +1,7 @@
 import * as types from '../actions/types';
+import * as ViewComponents from '../components/presentation-components';
+import * as EditorComponents from '../components/editor-components';
+
 
 const defaultData = {
   editingIndex: null,
@@ -6,7 +9,9 @@ const defaultData = {
   editing: true,
   viewMode: 'editing',
   controllerMenu: 'component',
-  pageTitleForm: false
+  pageTitleForm: false,
+  presentationComponents: ViewComponents,
+  editorComponents: EditorComponents
 }
 
 export default function(state = defaultData, action) {
@@ -51,6 +56,15 @@ export default function(state = defaultData, action) {
 
     case types.TOGGLE_TITLE_FORM:
       return Object.assign({}, state, { pageTitleForm: !state.pageTitleForm });
+
+    case 'ADD_PLUGIN_COMPONENT':
+      console.log('in reducer', action.payload)
+      const viewComponent = action.payload.view
+      const viewComponentMap = Object.assign({}, state.presentationComponents, viewComponent)
+      const editComponent = action.payload.editor
+      const editComponentMap = Object.assign({}, state.editorComponents, editComponent)
+
+      return Object.assign({}, state, { presentationComponents: viewComponentMap, editorComponents: editComponentMap });
   }
   return state;
 }
