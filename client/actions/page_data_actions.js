@@ -128,3 +128,12 @@ export function getPages() {
     xhr.send();
   }
 }
+
+// extension actions
+
+export function addPluginComponent(data) {
+  return {
+    type: 'ADD_PLUGIN_COMPONENT',
+    payload: data
+  }
+}
