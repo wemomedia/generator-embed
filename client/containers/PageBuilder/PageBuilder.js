@@ -11,6 +11,54 @@ import PageController from '../../components/controller-components/PageControlle
 import * as actions from '../../actions/index';
 
 function PageBuilder(props) {
+
+  // listen for plugin register event from parent
+  window.addEventListener('generator-register-plugin', e => {
+    const fileUrls = e.detail.urls
+    var viewPromise = readComponentData(fileUrls.view)
+    var editorPromise = readComponentData(fileUrls.editor)
+    var dataPromise = readComponentData(fileUrls.data)
+
+    function readComponentData(url) {
+      return new Promise((resolve, reject) => {
+        //get component data from file
+        var client = new XMLHttpRequest();
+        client.open('GET', url);
+        client.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            const componentString = client.responseText;
+            resolve(componentString)
+          }
+        }
+        client.send();
+      })
+    }
+
+    Promise.all([viewPromise, editorPromise, dataPromise])
+    .then(values => {
+      const componentStrings = { view: values[0], editor: values[1], data: values[2] }
+      insertComponent(componentStrings)
+    });
+
+    function insertComponent(strings) {
+      const data = JSON.parse(strings.data);
+      // translate component from string to function
+      const viewTranslate = Babel.transform(strings.view, { presets: ['es2017', 'react'] }).code;
+      const editorTranslate = Babel.transform(strings.editor, { presets: ['es2017', 'react'] }).code;
+      const ViewComponent = eval('(' + viewTranslate + ')')
+      const EditorComponent = eval('(' + editorTranslate + ')')
+
+      // add component data to component index
+      const newComponent = { view: {}, editor: {} }
+      newComponent.view[data.title] = ViewComponent
+      newComponent.editor[data.title + 'Editor'] = EditorComponent
+      props.addPluginComponent(newComponent)
+      // add component to active component list
+      props.addComponent(null, data)
+    }
+  })
+  // end plugin listener
+
   // check if in editor mode, send component index to update the editor
   const handlePageClick = function(e, component, ind) {
     if (props.pageData.editing) {
@@ -36,6 +84,7 @@ function PageBuilder(props) {
             handlePageClick={handlePageClick.bind(this)}
             reorderComponent={props.reorderComponent}
             handleEditorChange={props.handleEditorChange}
+            addPluginComponent={props.addPluginComponent}
           />
         )
       }
@@ -76,12 +125,6 @@ function PageBuilder(props) {
     }
   })();
 
-  // const saveModal = (() => {
-  //   if (props.pageData.pageTitleForm) {
-  //     return <PageTitleForm savePage={props.savePage} />
-  //   }
-  // })();
-
   // render elements
   return (
     <div>
@@ -99,6 +142,8 @@ function PageBuilder(props) {
           handlePageClick={handlePageClick.bind(this)}
           reorderComponent={props.reorderComponent}
           handleEditorChange={props.handleEditorChange}
+          addPluginComponent={props.addPluginComponent}
+          addComponent={props.addComponent}
         />
       </div>
     </div>
