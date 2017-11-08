@@ -107,23 +107,32 @@ function generator(config, targetDiv){
 
 // register new plugins
 (function initPluginRegister() {
-  var fileLoader = document.getElementById('file-loader')
-  fileLoader.addEventListener('change', e => { readURL(fileLoader); })
+  var componentUrls = {}
+  var submitPluginBtn = document.getElementById('submit-plugin-btn')
+  var viewFileLoader = document.getElementById('view-file-loader')
+  var editorFileLoader = document.getElementById('editor-file-loader')
+  var dataFileLoader = document.getElementById('data-file-loader')
+
+  submitPluginBtn.addEventListener('click', e => submitPlugin())
+  viewFileLoader.addEventListener('change', e => { readURL('view', viewFileLoader) })
+  editorFileLoader.addEventListener('change', e => { readURL('editor', editorFileLoader) })
+  dataFileLoader.addEventListener('change', e => { readURL('data', dataFileLoader) })
+
 
   // get file url
-  function readURL(input) {
+  function readURL(file, input) {
     if (input.files && input.files[0]) {
       var reader = new FileReader();
       reader.onload = function(e) {
-        submitPlugin(e.target.result);
+        componentUrls[file] = e.target.result;
       }
       reader.readAsDataURL(input.files[0]);
     }
   }
 
   // send data and component url to generator app
-  function submitPlugin(url) {
-    var setUp = new CustomEvent("generator-register-plugin", { detail: { url: url, title: 'HelloWorld', data: {} }});
+  function submitPlugin() {
+    var setUp = new CustomEvent("generator-register-plugin", { detail: { urls: componentUrls }});
     var iframe = document.getElementById("generator-iframe");
     iframe.contentWindow.dispatchEvent(setUp)
   }
