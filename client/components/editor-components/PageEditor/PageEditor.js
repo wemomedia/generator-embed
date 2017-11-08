@@ -1,13 +1,11 @@
 import React from 'react';
 
 import styles from './page-editor.scss';
-
-// import components
-import * as EditorComponents from '../index';
 import ColorPicker from '../ColorPicker/ColorPicker';
 
 export default function PageEditor(props) {
   const editingIndex = props.pageData.editingIndex;
+  const EditorComponents = props.pageData.editorComponents;
 
   const formComponent = (() => {
     if (editingIndex === null) {
