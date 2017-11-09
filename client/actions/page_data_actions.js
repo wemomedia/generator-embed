@@ -131,9 +131,9 @@ export function getPages() {
 
 // extension actions
 
-export function addPluginComponent(data) {
-  return {
-    type: 'ADD_PLUGIN_COMPONENT',
-    payload: data
-  }
-}
+// export function addPluginComponent(data) {
+//   return {
+//     type: 'ADD_PLUGIN_COMPONENT',
+//     payload: data
+//   }
+// }
