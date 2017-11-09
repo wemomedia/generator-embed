@@ -45,7 +45,7 @@ export default function PageEditor(props) {
 
   return (
     <div className={styles['page-editor']}>
-      <img src="https://s3.amazonaws.com/igen.wevr.com/5a257672-7c35-4357-b9de-aae49ceef06a_tranport-white.png"/>
+      <div className={styles['page-editor-title-bar']} />
       <form>
         {formComponent}
       </form>
