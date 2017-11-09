@@ -44,7 +44,7 @@ export default function Page(props) {
   // if not in editing mode
   // set page to full width
   const pageStyle = {};
-  if (props.editing) { pageStyle.width = 'calc(100vw - 18.625em)'; }
+  if (props.editing) { pageStyle.width = 'calc(100vw - 16.75em)'; }
   pageStyle.background = props.pageStyle.background;
 
 
