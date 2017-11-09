@@ -1,15 +1,17 @@
 import React from 'react';
+
 // import static styles
 import styles from './page.scss';
-// import components
-import * as Components from '../index';
 
 export default function Page(props) {
+  const activeComponentData = props.activeComponents
+  const ComponentMap = props.pageData.presentationComponents
+
   // grab the header component from the component array
   // build an element
   const header = (() => {
-    const headerData = props.activeComponents[0];
-    const HeaderComponent = Components[headerData.title];
+    const headerData = activeComponentData[0];
+    const HeaderComponent = ComponentMap[headerData.title];
     return <HeaderComponent
               data-index={0}
               data={headerData.data}
@@ -22,10 +24,10 @@ export default function Page(props) {
 
   // map over activeComponents array following the header component
   // for each item build an element
-  const activeComponents = props.activeComponents.map((component, i) => {
+  const activeComponents = activeComponentData.map((component, i) => {
     if (i > 0) {
-      if (!component) return console.log('failing', i, props.activeComponents);
-      const Component = Components[component.title];
+      if (!component) return console.log('failing', i, activeComponentData);
+      const Component = ComponentMap[component.title];
       return <Component key={i}
                 data-index={i}
                 data={component.data}
@@ -42,9 +44,7 @@ export default function Page(props) {
   // if not in editing mode
   // set page to full width
   const pageStyle = {};
-  if (props.editing) {
-    pageStyle.width = 'calc(100vw - 18.625em)';
-  }
+  if (props.editing) { pageStyle.width = 'calc(100vw - 18.625em)'; }
   pageStyle.background = props.pageStyle.background;
 
 
@@ -52,18 +52,18 @@ export default function Page(props) {
   // set new container style if video
   const containerStyle = {};
   containerStyle.background = props.pageStyle.containerBackground;
-  if (props.activeComponents[0].title === 'FullscreenVideo') {
+  if (activeComponentData[0].title === 'FullscreenVideo') {
     containerStyle.marginTop = '10em';
   }
 
-  if (props.activeComponents[0].title === 'VideoHeader') {
+  if (activeComponentData[0].title === 'VideoHeader') {
     pageStyle.marginTop = '100vh';
     pageStyle.paddingBottom = 0;
     pageStyle.minHeight = '100vh';
   }
 
   // set styles for homepage template
-  if (props.activeComponents[0].title === 'TransportHomeHeader') {
+  if (activeComponentData[0].title === 'TransportHomeHeader') {
     pageStyle.paddingBottom = '0';
     containerStyle.paddingBottom = '0';
     containerStyle.paddingTop = '0';
