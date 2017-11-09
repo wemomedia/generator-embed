@@ -135,5 +135,13 @@ function generator(config, targetDiv){
     var setUp = new CustomEvent("generator-register-plugin", { detail: { urls: componentUrls }});
     var iframe = document.getElementById("generator-iframe");
     iframe.contentWindow.dispatchEvent(setUp)
+    return clearInputs()
+  }
+
+  function clearInputs() {
+    viewFileLoader.value = null
+    editorFileLoader.value = null
+    dataFileLoader.value = null
+    return;
   }
 })()
