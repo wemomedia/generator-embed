@@ -21,16 +21,16 @@
     padding: 1em;
     font-size: 1rem;
     background-color: rgba(0,0,0,0);
-    border: 2px solid rgba(0,0,0,.1);
-    color: $transport-accent;
+    border: 1px solid rgba(0,0,0,.1);
+    color: $orange;
     transition: 1s;
     letter-spacing: .1em;
     cursor: pointer;
     border-radius: .25em;
     font-weight: 400;
     &:hover {
-      border: 2px solid $transport-accent;
-      color: $transport-accent;
+      border: 1px solid $orange;
+      color: $orange;
       background: transparent;
     }
   }

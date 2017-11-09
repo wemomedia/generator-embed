@@ -2,15 +2,15 @@
 
 .image-uploader {
   height: auto !important;
-  width: 85% !important;
-  background-color: #3c3c3c;
-  border: 1px solid #505050 !important;
+  width: 100% !important;
+  background-color: rgba(0,0,0,.3);
+  border: none !important;
   border-radius: none !important;
   padding: 1.5em 0em 1em;
   text-align: center;
 
   button {
-    border: 2px solid rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.05);
   }
 
   svg {

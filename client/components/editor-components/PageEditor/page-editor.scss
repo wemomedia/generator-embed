@@ -5,29 +5,43 @@
   right: 0;
   top: 0;
   height: 100vh;
-  width: calc(17em - 2px);
+  width: calc(15em);
   padding: .5em 1.5em;
-  background-color: $background;
-  border: 1px solid $secondary-background;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  background-color: rgb(50,50,50);
+  border: none;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
   overflow: scroll;
   color: $text-color !important;
   font-weight: 300;
   letter-spacing: .075rem;
 
-  img {
-    // border-style: none;
-    width: 10em;
-    margin-top: 1.5em;
+  .page-editor-title-bar {
+    position: relative;
+    background: rgba(0, 0, 0, .3);
+    width: calc(100% + 3em);
+    padding: 1.25em 0em;
+    top: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-0.5em);
+    transform: translateX(-50%) translateY(-0.5em);
+    background-image: url(https://igen.wevr.com/8986e3b6-196c-4ffe-8592-8d0d0deba79f_tranport-orang.png);
+    background-size: 10em;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 1.75em;
   }
 
   h3 {
-    font-weight: 300;
+    font-weight: 400;
     color: rgba(255,255,255,.75) !important;
+    letterSpacing: 0.2em;
+    margin: 1.25em 0 2em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
   }
 
   form  {
-    padding-bottom: 5em;
+    padding-bottom: 3.5em;
   }
 
   fieldset {
@@ -36,9 +50,11 @@
 
     label {
       display: block;
-      margin: .5em auto 1.5em;
+      position: relative;
+      margin: .5em auto 1.75em;
+      padding: .15em 0;
       color: $label-color;
-      font-size: .9em;
+      font-size: .8em;
 
       input, textarea, select {
         display: block;
@@ -46,10 +62,11 @@
         width: 90%;
         height: 2em;
         padding: 0.25em 0.5em;
-        background-color: $input-background;
-        border: 1px solid $secondary-background;
+        background-color: rgba(0,0,0,.3);
+        border: none;
         color: $text-color;
         font-weight: 300;
+        font-size: .8rem;
         letter-spacing: .075rem;
 
         &:focus {
@@ -68,11 +85,50 @@
       display: none;
   }
 
+  hr {
+    border-color: rgba(0,0,0,.1);
+    width: 90%;
+    margin: 2.5em 0 1.5em;
+  }
+
   button {
     color: $text-color;
     background: transparent;
     font-size: .9rem;
-    border: 2px solid rgba(0,0,0,.075);
+    border: 1px solid rgba(0,0,0,.3);
     box-shadow: none;
+  }
+
+
+  label {
+    margin: 1em 0;
+    span {
+      font-size: 1.25em;
+      color: rgba(255,255,255,.67);
+    }
+  }
+
+  input[type=range] {
+    appearance:none;
+    display: inline-block;
+    right: 2rem;
+    width: 10rem;
+    height: .25rem;
+    padding: 0;
+    outline: none;
+    border-radius: .5rem;
+    margin-right: 1rem;
+    margin-top: 1.15rem;
+
+    &:active, &:focus { outline: none !important; }
+
+    &::-webkit-slider-thumb {
+      appearance: none;
+      width: 1rem;
+      height: 1rem;
+      background-color: white;
+      border-radius: 1rem;
+      cursor: pointer;
+    }
   }
 }

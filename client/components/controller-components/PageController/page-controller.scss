@@ -2,18 +2,22 @@
 
 .page-controller {
   position: fixed;
+  top: 0;
   margin: 1.5em;
-  background-color: $background;
+  background-color: rgba(30,30,30,.975);
   padding: 0 1em;
-  box-shadow: 0 10px 12px rgba(0,0,0,0.15), 0 6px 6px rgba(0,0,0,0.20);
-  border: 1px solid $secondary-background;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  border: none;
   box-sizing: border-box;
   z-index: 10;
   display: inline-block;
+  border-radius: 3px;
 
   button {
     position: relative;
-    padding: 1em;
+    padding: 0 1.25em;
+    height: 2.75rem;
+    line-height: 2.75rem;
     border: none;
     border-radius: none;
     background-color: transparent;
