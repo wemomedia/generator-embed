@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-standalone": "^6.26.0",
     "immutable": "^3.8.1",
     "nodemon": "^1.11.0",
     "object-assign": "^4.1.1",
@@ -35,12 +36,13 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
-    "babel-core": "^6.21.0",
+    "babel-core": "^6.26.0",
     "babel-loader": "^6.2.10",
     "babel-preset-env": "^1.1.6",
     "babel-preset-react": "^6.16.0",
     "css-loader": "^0.26.1",
     "extract-text-webpack-plugin": "^2.0.0-beta.4",
+    "function-from-file": "^1.0.2",
     "immutability-helper": "^2.0.0",
     "node-sass": "^4.1.1",
     "postcss-loader": "^1.2.1",
