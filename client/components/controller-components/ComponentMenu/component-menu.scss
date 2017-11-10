@@ -2,9 +2,10 @@
 
 .component-menu {
   position: fixed;
-  width: 18.85em;
+  width: 18.95em;
   max-height: 66vh;
-  margin-top: 0px;
+  margin-top: 0;
+  top: 4.15rem;
   z-index: 5;
   left: 1.77em;
   background-color: rgba(0,0,0,.9);
