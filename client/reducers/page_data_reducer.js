@@ -11,7 +11,8 @@ const defaultData = {
   controllerMenu: 'component',
   pageTitleForm: false,
   presentationComponents: ViewComponents,
-  editorComponents: EditorComponents
+  editorComponents: EditorComponents,
+  theme: null
 }
 
 export default function(state = defaultData, action) {
@@ -20,12 +21,11 @@ export default function(state = defaultData, action) {
       return Object.assign(
         {},
         state,
-        action.payload,
-        defaultData
+        action.payload
       );
 
     case types.SET_PAGE_DATA:
-      return defaultData;
+      return state;
 
     case types.CHANGE_EDITING_INDEX:
       return Object.assign({}, state, { editingIndex: action.payload});
@@ -63,6 +63,12 @@ export default function(state = defaultData, action) {
       const editComponent = action.payload.editor
       const editComponentMap = Object.assign({}, state.editorComponents, editComponent)
       return Object.assign({}, state, { presentationComponents: viewComponentMap, editorComponents: editComponentMap });
+
+    case types.SET_THEME:
+      const theme = action.payload
+      const newState = Object.assign({}, state, { theme })
+      return newState;
+
   }
   return state;
 }
