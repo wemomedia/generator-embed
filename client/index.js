@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
 import { Router, browserHistory } from 'react-router';
 
-import { LOAD_COMPONENTS, SET_PAGE_DATA, GET_PAGE_DATA, CHANGE_EDITING_INDEX, TOGGLE_CONTROLLER_MENU, ADD_PLUGIN_COMPONENT } from './actions/types';
+import { LOAD_COMPONENTS, SET_PAGE_DATA, GET_PAGE_DATA, CHANGE_EDITING_INDEX, TOGGLE_CONTROLLER_MENU, ADD_PLUGIN_COMPONENT, SET_THEME } from './actions/types';
 import routes from './routes';
 import reducers from './reducers';
 
@@ -19,6 +19,7 @@ const store = createStoreWithMiddleware(reducers);
 window.addEventListener('message', e => {
   if (e.data.call === 'configPage') {
     const componentData = JSON.parse(e.data.config.components);
+    const themeData = JSON.parse(e.data.config.theme);
     const parentId = e.data.config.parentId;
     const basePath = e.data.config.basePath ? e.data.config.basePath : null;
 
@@ -28,6 +29,7 @@ window.addEventListener('message', e => {
 
     // load components
     store.dispatch({ type: LOAD_COMPONENTS, payload: componentData });
+    store.dispatch({ type: SET_THEME, payload: themeData });
     store.dispatch({ type: SET_PAGE_DATA });
     browserHistory.push('/build');
   } else if (e.data.call === 'getData') {
