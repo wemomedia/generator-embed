@@ -7,15 +7,15 @@ import styles from './styles/app.scss';
 
 class App extends React.Component {
   render() {
+    const { theme } = this.props.pageData
+
     const header = (() => {
-      if (this.props.location.pathname !== '/build') {
-        return <Header />
-      }
+      if (this.props.location.pathname !== '/build') return <Header />
       return;
     })();
 
     // remove background in build mode, unless mobile view
-    const backgroundStyle = (() => {
+    const style = (() => {
       if (this.props.location.pathname === '/build' && this.props.pageData.viewMode !== 'mobile') {
         return { background: 'rgba(0,0,0,0)' }
       } else if (this.props.location.pathname === '/build' && this.props.pageData.viewMode === 'mobile') {
@@ -23,8 +23,16 @@ class App extends React.Component {
       }
     })();
 
+    var fontOverride = ''
+    if (theme) {
+      style.fontFamily = theme.font.fontFamily
+      fontOverride = `body, button, input { font-family: ${theme.font.fontFamily} !important;} }`
+    }
+
     return (
-      <div className={styles.app} style={backgroundStyle}>
+      <div className={styles.app} style={style}>
+        { (theme && theme.font) && <link href={theme.font.src} rel="stylesheet" /> }
+        { (theme && theme.font) && <style>{fontOverride}</style> }
         { header }
         { this.props.children }
       </div>
